@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical Error</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* Container for the running code */
+        #code-storm {
+            font-size: 16px;
+            word-break: break-all;
+            line-height: 1.2;
+            padding: 10px;
+        }
+
+        /* Centered final message container */
+        #final-message {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ff0000; /* Aggressive Red */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px #000000;
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #00ff00;
+            margin: 5px 0;
+        }
+        
+        .signature {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: #ffffff;
+            border-top: 1px solid #333;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="code-storm"></div>
+    
+    <div id="final-message">
+        <h1>System Overridden</h1>
+        <p>Muzamil's Mobile Successfully Hacked.</p>
+        <p class="signature">Hacked by Ahmed Raza</p>
+    </div>
+
+    <script>
+        const body = document.body;
+        const codeStorm = document.getElementById('code-storm');
+        const finalMessage = document.getElementById('final-message');
+        
+        // Background colors: Black, Red, Dark Green
+        const bgColors = ['#000000', '#4a0000', '#002200']; 
+        
+        // 1. Flashing background effect
+        const flashInterval = setInterval(() => {
+            body.style.backgroundColor = bgColors[Math.floor(Math.random() * bgColors.length)];
+        }, 90); // Changes color every 90 milliseconds
+
+        // 2. Generating random "hacker" code
+        const codeInterval = setInterval(() => {
+            // Mix of binary, hex, and symbols
+            const chars = '010101010101010101010101010101010101ABCDEF!@#$%>:<{}[]';
+            let randomString = '';
+            for(let i = 0; i < 150; i++) {
+                randomString += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            // Append new code and scroll to bottom
+            codeStorm.innerHTML += randomString + '<br>';
+            window.scrollTo(0, document.body.scrollHeight);
+        }, 50); // Generates new lines every 50 milliseconds
+
+        // 3. Stop the prank and show the final result after 5.5 seconds
+        setTimeout(() => {
+            clearInterval(flashInterval);
+            clearInterval(codeInterval);
+            
+            // Lock the screen state
+            body.style.backgroundColor = '#000000'; 
+            codeStorm.style.display = 'none'; 
+            finalMessage.style.display = 'block'; 
+            
+        }, 5500); 
+    </script>
+</body>
+
+
+</html>
